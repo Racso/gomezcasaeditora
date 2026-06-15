@@ -92,10 +92,6 @@ a{ color:var(--sky-ink); text-underline-offset:3px; text-decoration-thickness:1p
 
 .prose p{ margin:0 0 1.05em; }
 .prose strong{ font-weight:600; color:var(--ink); }
-.prose__call{
-  font-family:"Fraunces", serif; font-style:italic; font-weight:600;
-  font-size:1.3rem; color:var(--clay); margin-top:1.1em;
-}
 
 .btn{
   --bg:var(--ink); --fg:#fff;
@@ -230,6 +226,11 @@ a{ color:var(--sky-ink); text-underline-offset:3px; text-decoration-thickness:1p
   background:var(--ochre);
 }
 .children li span{ color:var(--sky); font-weight:400; font-style:italic; }
+.children__call{
+  font-family:"Fraunces", serif; font-style:italic; font-weight:600;
+  font-size:1.18rem; color:var(--ochre); line-height:1.4;
+  margin:1.2rem 0 0; padding-top:1rem; border-top:1px solid rgba(244,236,217,.18);
+}
 
 /* ============================================================
    CATÁLOGO
