@@ -293,7 +293,9 @@ a{ color:var(--sky-ink); text-underline-offset:3px; text-decoration-thickness:1p
 }
 .founder__photo{ margin:0; }
 .founder__photo img{
-  width:100%; border-radius:var(--r); box-shadow:var(--shadow);
+  width:100%; height:auto; aspect-ratio:520 / 785;
+  object-fit:cover;             /* never distort the portrait */
+  border-radius:var(--r); box-shadow:var(--shadow);
   filter:saturate(.92);
 }
 .prose-lead{
