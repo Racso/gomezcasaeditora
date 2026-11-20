@@ -4,6 +4,11 @@ name: Poof! deploy
 on:
   push:
     branches: ["main"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Image tag already in the registry to redeploy (a commit sha). Empty builds this branch."
+        required: false
 
 permissions:
   contents: read
@@ -17,7 +22,12 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      - name: Use an image already in the registry
+        if: github.event_name == 'workflow_dispatch' && inputs.tag != ''
+        run: echo "IMAGE=ghcr.io/racso/gomezcasaeditora:${{ inputs.tag }}" >> $GITHUB_ENV
+
       - name: Build and push image
+        if: github.event_name != 'workflow_dispatch' || inputs.tag == ''
         run: |
           echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
           IMAGE=ghcr.io/racso/gomezcasaeditora:${{ github.sha }}
